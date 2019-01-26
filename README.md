@@ -2,7 +2,7 @@
 A project to create a binary clock with a home-made circuit-board and a raspberrypi zero
 
 This project contains of two parts:
-The circuitboard and the raspberrypi code in python (not yet published).
+The circuitboard and the raspberrypi code in python.
 
 The circuit board is a sort of 'hat' to a raspberry pi zero with 20 WS2813B programmable LEDs for the clock-display, a 2x20 header
 for the pi connection, a connection for a DS3231 RTC and also an optional connector for a 2x16 display.
