@@ -34,7 +34,8 @@ class BinaryDisplay(object):
 
         #Take values from array and set values for each position
 
-        #Loop through all values to program the display-leds with the new setting
+        #Loop through all values to program the display-leds with the new setting, starting from 'end'
+        #Bits shifted from the first led through the whole array
 
 
     def testBinaryDisplay(self, testtime):

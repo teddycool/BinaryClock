@@ -54,6 +54,7 @@ import RPi.GPIO as GPIO
 import time
 
 # Define GPIO to LCD mapping
+#TODO: fix correct mapping for the circuitboard
 LCD_RS = 7
 LCD_E  = 8
 LCD_D4 = 25
