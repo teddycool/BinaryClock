@@ -11,5 +11,4 @@ I aim to mount this on the back-side of a plexi-glass panel to make a clock that
 will also be published when ready.
 
 Ref1: https://en.wikipedia.org/wiki/Binary_clock
-
 Ref2: https://www.raspberrypi-spy.co.uk/2015/05/adding-a-ds3231-real-time-clock-to-the-raspberry-pi/
