@@ -9,4 +9,6 @@ for the pi connection and a connection for a DS3231 RTC.
 
 I aim to mount this on the back-side of a plexi-glass panel to make a clock that can be mounted on the wall. Pictures and drawings of this 
 will also be published when ready.
+
 Ref: https://en.wikipedia.org/wiki/Binary_clock
+Ref: https://www.raspberrypi-spy.co.uk/2015/05/adding-a-ds3231-real-time-clock-to-the-raspberry-pi/
