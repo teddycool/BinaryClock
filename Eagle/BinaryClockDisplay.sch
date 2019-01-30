@@ -2233,6 +2233,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="S1" library="SparkFun-Electromechanical" deviceset="SWITCH-MOMENTARY-2" device="SMD-1101NE" value="SWITCH"/>
 <part name="GND22" library="supply1" deviceset="GND" device=""/>
 <part name="GND23" library="supply1" deviceset="GND" device=""/>
+<part name="GND24" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -2545,6 +2546,9 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <instance part="GND23" gate="1" x="198.12" y="-5.08" smashed="yes">
 <attribute name="VALUE" x="195.58" y="-7.62" size="1.778" layer="96"/>
 </instance>
+<instance part="GND24" gate="1" x="226.06" y="43.18" smashed="yes">
+<attribute name="VALUE" x="223.52" y="40.64" size="1.778" layer="96"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -2729,6 +2733,11 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pinref part="JP2" gate="A" pin="39"/>
 <pinref part="GND23" gate="1" pin="GND"/>
 <wire x1="210.82" y1="-2.54" x2="198.12" y2="-2.54" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="JP2" gate="A" pin="2"/>
+<pinref part="GND24" gate="1" pin="GND"/>
+<wire x1="218.44" y1="45.72" x2="226.06" y2="45.72" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="+3V3" class="0">
