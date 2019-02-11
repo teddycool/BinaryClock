@@ -11,9 +11,12 @@ class BinaryDisplay(object):
 
     def __init__(self,gpio):
         print "Init BinaryDisplay object..."
+        #lookup  for the binary column data
+        self._figuredict ={0: [0,0,0,0],1:[1,0,0,0], 2: [0,1,0,0],3: [1,1,0,0] }
+        self._ledstatusarray=[]
 
-    #This methods sets the values for ONE of the WS2812 leds
-    def _setLed(self, ledstatus ):
+    #This methods sets the values for one column of the WS2812 leds
+    def _setLeds(self, ledstatusarray ):
         print "_setLed started..."
         ledsetingarray = []
 
@@ -42,6 +45,16 @@ class BinaryDisplay(object):
         print "testClock started..."
 
         #Loop through all leds
+
+
+    def update(self):
+        self._ledstatusarray = []
+        #Set current time...
+        timestruct = time.localtime()
+        #Hours...
+        self._setLeds(self._figuredict[timestruct.tm_hours/10][:2]) #only first 2 in this column
+        self._setLeds(self._figuredict[timestruct.tm_hours%10])
+        #Minutes...
 
 
 
