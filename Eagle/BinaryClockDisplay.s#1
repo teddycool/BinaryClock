@@ -3012,14 +3012,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <label x="-226.06" y="73.66" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="3V3" class="0">
-<segment>
-<pinref part="JP3" gate="A" pin="1"/>
-<pinref part="JP2" gate="A" pin="1"/>
-<wire x1="193.04" y1="45.72" x2="210.82" y2="45.72" width="0.1524" layer="91"/>
-<label x="200.66" y="48.26" size="1.778" layer="95"/>
-</segment>
-</net>
 </nets>
 </sheet>
 </sheets>

@@ -18,7 +18,7 @@ class PushButton(object):
         self._states = ["Released","Pressed", "LongPressed"]
 
     def initialize(self):
-        self._gpio.setmode(self._gpio.BCM)
+        #self._gpio.setmode(self._gpio.BCM)
         self._gpio.setup(self._inputpin, self._gpio.IN, pull_up_down=self._gpio.PUD_UP)
 
     def update(self):

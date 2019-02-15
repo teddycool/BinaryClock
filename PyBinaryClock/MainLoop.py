@@ -13,24 +13,30 @@ class MainLoop(object):
     def __init__(self):
         self._gpio= GPIO
         self._gpio.setmode(self._gpio.BOARD)
-        self._binDisplay = BinaryDisplay.BinaryDisplay(self._gpio)
-        self._resetButton = IoInputs.PushButton(self._gpio,2)
+        self._binDisplay = BinaryDisplay.BinaryDisplay()
+        self._resetButton = IoInputs.PushButton(self._gpio,23)
 
     def initialize(self):
         print "Mainloop initialize"
-        self._binDisplay.testBinaryDisplay(2)
+        self._resetButton.initialize()
+        self._binDisplay.initialize()
+        self._binDisplay.test()
         #TODO: If network detected, update RTC
 
         self._lastUpdate = time.time()
 
     def update(self):
-        if self._resetButton.update() == "LongPressed":
-            os.system('sudo reboot')
+        btnstatus = self._resetButton.update()
+        if btnstatus == "LongPressed":
+            self._binDisplay.test()
 
-        if time.time() - self._lastUpdate > 1:
-            self._lastUpdate = time.time()
-            #TODO: update the display...
-            self._binDisplay.update()
+        if time.localtime().tm_hour == 9 and time.localtime().tm_min < 10:
+                self._binDisplay.showFikaPattern()
+                print "Fika-tajm"
+        else:
+            if time.time() - self._lastUpdate > 0.1:
+                self._lastUpdate = time.time()
+                self._binDisplay.update()
 
     def __del__(self):
         self._gpio.cleanup()

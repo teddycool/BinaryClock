@@ -165,7 +165,6 @@ github.com/teddycool</text>
 <text x="62.7" y="58.6" size="1.778" layer="26" rot="MR0">Raspberry Pi Zero</text>
 <text x="12.2" y="65.3" size="1.778" layer="26" rot="MR0">1</text>
 <text x="67.3" y="61.4" size="1.778" layer="26" rot="MR0">40</text>
-<text x="50.8" y="26.4" size="1.778" layer="26" rot="MR270">RTC</text>
 </plain>
 <libraries>
 <library name="SparkFun-LED" urn="urn:adsk.eagle:library:529">
