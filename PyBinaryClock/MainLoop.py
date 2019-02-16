@@ -39,6 +39,7 @@ class MainLoop(object):
                 self._binDisplay.update()
 
     def __del__(self):
+        self._binDisplay.off()
         self._gpio.cleanup()
         print "MainLoop cleaned up"
 

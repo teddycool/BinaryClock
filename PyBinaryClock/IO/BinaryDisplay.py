@@ -94,6 +94,11 @@ class BinaryDisplay(object):
         self._displayArray.show()
 
 
+    def off(self):
+        #Turn off the display...
+        for i in range(20):
+            self._displayArray.setPixelColor(i, Color(0, 0, 0, ))
+        self._displayArray.show()
 
 
 
