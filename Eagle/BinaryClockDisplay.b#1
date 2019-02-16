@@ -152,23 +152,24 @@
 <wire x1="75.87" y1="8.89" x2="75.87" y2="68.57" width="0" layer="20"/>
 <wire x1="75.87" y1="68.57" x2="0" y2="68.57" width="0" layer="20"/>
 <wire x1="0" y1="68.57" x2="0" y2="8.89" width="0" layer="20"/>
-<text x="7.88" y="12.03" size="3.81" layer="25">Hours</text>
-<text x="27.97" y="11.93" size="3.81" layer="25">Minutes</text>
-<text x="49.6" y="11.63" size="3.81" layer="25">Seconds</text>
+<text x="5.98" y="13.93" size="3.81" layer="25">Hours</text>
+<text x="27.07" y="13.63" size="3.81" layer="25">Minutes</text>
+<text x="50.3" y="13.63" size="3.81" layer="25">Seconds</text>
 <hole x="4" y="65" drill="4"/>
 <hole x="72.8" y="65" drill="4"/>
 <hole x="4" y="13" drill="4"/>
 <hole x="72.8" y="12.8" drill="4"/>
-<text x="13.9" y="59.2" size="1.778" layer="26" rot="MR270">BinaryClock v. 2
+<text x="38.4" y="56.9" size="1.778" layer="26" rot="MR180">BinaryClock v. 2
 Design: Pär Sundbäck
 github.com/teddycool</text>
 <text x="62.7" y="58.6" size="1.778" layer="26" rot="MR0">Raspberry Pi Zero</text>
 <text x="12.2" y="65.3" size="1.778" layer="26" rot="MR0">1</text>
 <text x="67.3" y="61.4" size="1.778" layer="26" rot="MR0">40</text>
 <text x="50.8" y="26.4" size="1.778" layer="26" rot="MR270">RTC</text>
-<text x="2.5" y="55.2" size="1.778" layer="26" rot="MR270">5V</text>
-<text x="2" y="65.2" size="1.778" layer="26" rot="MR270">GND</text>
+<text x="1.4" y="55.2" size="1.778" layer="26" rot="MR180">5V</text>
+<text x="0.4" y="62.7" size="1.778" layer="26" rot="MR180">GND</text>
 <text x="16.7" y="15.3" size="1.778" layer="26" rot="MR0">Reset</text>
+<text x="16.1" y="55.4" size="5.08" layer="25" ratio="20">The PyBinaryClock!</text>
 </plain>
 <libraries>
 <library name="SparkFun-LED" urn="urn:adsk.eagle:library:529">
@@ -1282,7 +1283,6 @@ design rules under a new name.</description>
 <via x="52.7" y="39.2" extent="1-16" drill="0.35"/>
 <wire x1="52.07" y1="39.737" x2="52.163" y2="39.737" width="0.1524" layer="1"/>
 <wire x1="52.163" y1="39.737" x2="52.7" y2="39.2" width="0.1524" layer="1"/>
-<wire x1="54.81" y1="39.2" x2="52.7" y2="39.2" width="0.1524" layer="16"/>
 <via x="52.9" y="30.5" extent="1-16" drill="0.35"/>
 <wire x1="54.98" y1="30.48" x2="52.92" y2="30.48" width="0.1524" layer="16"/>
 <wire x1="52.92" y1="30.48" x2="52.9" y2="30.5" width="0.1524" layer="16" curve="-90"/>

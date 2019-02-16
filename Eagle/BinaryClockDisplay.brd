@@ -169,6 +169,7 @@ github.com/teddycool</text>
 <text x="1.4" y="55.2" size="1.778" layer="26" rot="MR180">5V</text>
 <text x="0.4" y="62.7" size="1.778" layer="26" rot="MR180">GND</text>
 <text x="16.7" y="15.3" size="1.778" layer="26" rot="MR0">Reset</text>
+<text x="11.6" y="55" size="5.08" layer="25" ratio="20">The PyBinaryClock!</text>
 </plain>
 <libraries>
 <library name="SparkFun-LED" urn="urn:adsk.eagle:library:529">
