@@ -11,6 +11,7 @@ I aim to mount this on the back-side of a plexi-glass panel to make a clock that
 will also be published when ready.
 
 The code depend on AdaFruit_NeoPixel:  pip install rpi_ws281x
+
 It is a very simple 'game-loop' kind of program that updates every 1/10 second. Taking current time and  split to each figure (collumn) and then calculate  the bit-pattern and set the LEDs accordingly.
 
 Future improvemnts will be a possibillity to configure colors and brightness from outside, maybe a BT interface or a 'webpage' kind of thing...
