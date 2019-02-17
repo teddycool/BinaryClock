@@ -2294,6 +2294,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="GND24" library="supply1" deviceset="GND" device=""/>
 <part name="JP1" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X2" device="" package3d_urn="urn:adsk.eagle:package:22435/2"/>
 <part name="GND25" library="supply1" deviceset="GND" device=""/>
+<part name="JP4" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X5" device="" package3d_urn="urn:adsk.eagle:package:22469/2" value="IO"/>
 </parts>
 <sheets>
 <sheet>
@@ -2553,6 +2554,9 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <instance part="GND25" gate="1" x="203.2" y="83.82" smashed="yes">
 <attribute name="VALUE" x="200.66" y="81.28" size="1.778" layer="96"/>
 </instance>
+<instance part="JP4" gate="A" x="177.8" y="2.54" smashed="yes" rot="MR0">
+<attribute name="VALUE" x="184.15" y="-7.62" size="1.778" layer="96" rot="MR0"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -2737,6 +2741,9 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pinref part="JP2" gate="A" pin="39"/>
 <pinref part="GND23" gate="1" pin="GND"/>
 <wire x1="210.82" y1="-2.54" x2="198.12" y2="-2.54" width="0.1524" layer="91"/>
+<pinref part="JP4" gate="A" pin="5"/>
+<wire x1="180.34" y1="-2.54" x2="198.12" y2="-2.54" width="0.1524" layer="91"/>
+<junction x="198.12" y="-2.54"/>
 </segment>
 <segment>
 <pinref part="JP2" gate="A" pin="6"/>
@@ -3141,6 +3148,34 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pinref part="JP2" gate="A" pin="1"/>
 <wire x1="193.04" y1="45.72" x2="210.82" y2="45.72" width="0.1524" layer="91"/>
 <label x="200.66" y="48.26" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="GPIO26" class="0">
+<segment>
+<pinref part="JP4" gate="A" pin="4"/>
+<pinref part="JP2" gate="A" pin="37"/>
+<wire x1="180.34" y1="0" x2="210.82" y2="0" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="GPIO19" class="0">
+<segment>
+<pinref part="JP4" gate="A" pin="3"/>
+<pinref part="JP2" gate="A" pin="35"/>
+<wire x1="180.34" y1="2.54" x2="210.82" y2="2.54" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="GPIO13" class="0">
+<segment>
+<pinref part="JP4" gate="A" pin="2"/>
+<pinref part="JP2" gate="A" pin="33"/>
+<wire x1="180.34" y1="5.08" x2="210.82" y2="5.08" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="GPIO6" class="0">
+<segment>
+<pinref part="JP4" gate="A" pin="1"/>
+<pinref part="JP2" gate="A" pin="31"/>
+<wire x1="180.34" y1="7.62" x2="210.82" y2="7.62" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

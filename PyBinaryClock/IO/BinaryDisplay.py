@@ -36,12 +36,9 @@ class BinaryDisplay(object):
 
 
     def showFikaPattern(self):
+        time.sleep(1)
         for i in range(20):
             self._displayArray.setPixelColor(i, Color(0, 50, 0, ))
-        self._displayArray.show()
-        time.sleep(2)
-        for i in range(20):
-            self._displayArray.setPixelColor(i, Color(0, 0, 0, ))
         self._displayArray.show()
         time.sleep(1)
 
