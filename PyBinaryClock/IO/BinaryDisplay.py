@@ -25,7 +25,7 @@ class BinaryDisplay(object):
 
     def initialize(self):
         self._displayArray.begin()
-        self._displayArray.setBrightness(50)
+        self._displayArray.setBrightness(40)
 
 
     #This methods sets the values for one column of the WS2812 leds
@@ -85,7 +85,7 @@ class BinaryDisplay(object):
             if self._ledstatusarray[led] == 0:
                 self._displayArray.setPixelColor(led,Color(0, 7, 0)) #Color when 'off'
             else:
-                self._displayArray.setPixelColor(led, Color(80, 0, 0,)) #Color when 'on'
+                self._displayArray.setPixelColor(led, Color(40, 0, 0,)) #Color when 'on'
 
         #Turn them on with new values
         self._displayArray.show()

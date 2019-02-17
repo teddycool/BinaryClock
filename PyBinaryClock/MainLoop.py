@@ -48,9 +48,18 @@ class MainLoop(object):
 
 
         if time.time() - self._lastTempCheck > 10:
-            if self._tm.get_cpu_temperature() > 50:
+            temp = self._tm.get_cpu_temperature()
+            self._lastTempCheck=time.time()
+            print str(temp)
+            if self._tm.get_cpu_temperature() > 60:
+                self._binDisplay.off()
                 print "High temp!"
                 print "Shutting down..."
+                f = file(time.asctime() + "temp.log", 'w')
+                f.write("High temperature!")
+                f.write(str(temp))
+                f.close()
+                time.sleep(5)
                 os.system('sudo shutdown -h now')
 
 
