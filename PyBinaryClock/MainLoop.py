@@ -34,11 +34,11 @@ class MainLoop(object):
         if btnstatus == "LongPressed":
             self._binDisplay.test()
 
-        if time.localtime().tm_hour == 9 and time.localtime().tm_min < 15:
+        if time.localtime().tm_hour == 9 and (time.localtime().tm_min > 5 and time.localtime().tm_min < 15):
             self._binDisplay.showFikaPattern()
             print "Fika-tajm"
 
-        if time.localtime().tm_hour == 14 and (time.localtime().tm_min > 30 and time.localtime().tm_min < 45):
+        if time.localtime().tm_hour == 14 and (time.localtime().tm_min > 30 and time.localtime().tm_min < 40):
             self._binDisplay.showFikaPattern()
             print "Fika-tajm"
 
