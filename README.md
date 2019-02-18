@@ -14,7 +14,18 @@ The code depend on AdaFruit_NeoPixel:  pip install rpi_ws281x
 
 It is a very simple 'game-loop' kind of program that updates every 1/10 second. Taking current time and  split to each figure (collumn) and then calculate  the bit-pattern and set the LEDs accordingly.
 
-Future improvemnts will be a possibillity to configure colors and brightness from outside, maybe a BT interface or a 'webpage' kind of thing...
+Future sw-improvements will be a possibillity to configure colors and brightness from outside, maybe a BT interface or a 'webpage' kind of thing...
+
+Future hw-improvemnts will be added to make it possible to have some IOs controled by time. 
 
 Ref1: https://en.wikipedia.org/wiki/Binary_clock
 Ref2: https://www.raspberrypi-spy.co.uk/2015/05/adding-a-ds3231-real-time-clock-to-the-raspberry-pi/
+
+
+<img src="https://github.com/teddycool/BinaryClock/blob/master/20190218_191029.jpg" alt="Front..."/>
+
+<img src="https://github.com/teddycool/BinaryClock/blob/master/20190218_191040.jpg" alt="Rear..."/>
+
+
+<img src="https://github.com/teddycool/BinaryClock/blob/master/20190218_191052.jpg" alt="Side..."/>
+
