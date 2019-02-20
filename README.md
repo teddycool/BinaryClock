@@ -5,7 +5,7 @@ This project contains of two parts:
 The circuitboard and the raspberrypi code in python 2.7
 
 The circuit board is a sort of 'hat' to a raspberry pi zero with 20 WS2812B programmable LEDs for the clock-display, a 2x20 header
-for the pi connection and a connection for a DS3231 RTC.
+for the pi connection and a connection for a DS3231 RTC. The board was manufactured by https://aisler.net which has a great service for small series prototypes. 
 
 The kit is mounted between two part of plexi-glass panels to make a clock that can be mounted on the wall. See pictures below.
 
