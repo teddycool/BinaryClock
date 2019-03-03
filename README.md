@@ -2,18 +2,18 @@
 A project to create a binary clock with a specially designed circuit-board and a raspberrypi zero
 
 This project contains of two parts:
-The circuitboard and the raspberrypi code in python 2.7
+The circuitboard, made in Eagle CAD and the Raspberrypi code, python 2.7 written in PyCharm Community edition.
 
-The circuit board is a sort of 'hat' to a raspberry pi zero with 20 WS2812B programmable LEDs for the clock-display, a 2x20 header
-for the pi connection and a connection for a DS3231 RTC.
+The circuit board is a of 'hat' to a raspberry pi zero with 20 WS2812B programmable LEDs for the clock-display, a 2x20 header
+for the pi connection and a connection for a DS3231 RTC. The board was manufactured by https://aisler.net that has a great quality service for small series of prototypes. 
 
-The kit is mounted between two part of plexi-glass panels to make a clock that can be mounted on the wall. See pictures below.
+The kit is mounted between two part of plexi-glass panels to make a clock that can be mounted on the wall or put on a table. See pictures below.
 
-The code depend on AdaFruit_NeoPixel:  pip install rpi_ws281x
+The code depend on https://github.com/rpi-ws281x/rpi-ws281x-python Install this first.
 
 It is a very simple 'game-loop' kind of program that updates every 1/10 second. Taking current time and  split to each figure (collumn) and then calculate  the bit-pattern and set the LEDs accordingly.
 
-Future sw-improvements will be a possibillity to configure colors and brightness from outside, maybe a BT interface or a 'webpage' kind of thing...
+Future sw-improvements will be added possibillities to configure colors and brightness from outside.
 
 Future hw-improvemnts will be added to make it possible to have some IOs controled by time. In version 1 the connection to the RTC didn't work correctly and this will also be fixed.
 
