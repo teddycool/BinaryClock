@@ -174,7 +174,7 @@ github.com/teddycool</text>
 <text x="70.4" y="47.3" size="1.778" layer="25">0/8</text>
 <text x="74.5" y="46.2" size="1.778" layer="26" rot="MR0">I/O</text>
 <text x="71.1" y="60.2" size="1.016" layer="26" rot="MR0">GND</text>
-<text x="71.1" y="57.5" size="1.016" layer="26" rot="MR0">3.3V</text>
+<text x="71.1" y="57.6" size="1.016" layer="26" rot="MR0">GPIO26</text>
 <text x="71.3" y="55.1" size="1.016" layer="26" rot="MR0">GPIO19</text>
 <text x="71.1" y="52.5" size="1.016" layer="26" rot="MR0">GPIO13</text>
 <text x="71.4" y="50.1" size="1.016" layer="26" rot="MR0">GPIO6</text>

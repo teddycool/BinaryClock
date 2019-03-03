@@ -174,7 +174,7 @@ github.com/teddycool</text>
 <text x="70.4" y="47.3" size="1.778" layer="25">0/8</text>
 <text x="74.5" y="46.2" size="1.778" layer="26" rot="MR0">I/O</text>
 <text x="71.1" y="60.2" size="1.016" layer="26" rot="MR0">GND</text>
-<text x="71.1" y="57.5" size="1.016" layer="26" rot="MR0">3.3V</text>
+<text x="71.1" y="57.6" size="1.016" layer="26" rot="MR0">GPIO26</text>
 <text x="71.3" y="55.1" size="1.016" layer="26" rot="MR0">GPIO19</text>
 <text x="71.1" y="52.5" size="1.016" layer="26" rot="MR0">GPIO13</text>
 <text x="71.4" y="50.1" size="1.016" layer="26" rot="MR0">GPIO6</text>
@@ -3133,21 +3133,12 @@ design rules under a new name.</description>
 <wire x1="19.4" y1="57.4" x2="18.45" y2="56.45" width="0.1524" layer="16"/>
 <wire x1="14.84" y1="63.45" x2="14.84" y2="60.069940625" width="0.1524" layer="16"/>
 <wire x1="14.84" y1="60.069940625" x2="14.738371875" y2="59.9683125" width="0.1524" layer="16"/>
+</signal>
+<signal name="GPIO26">
 <contactref element="JP4" pad="4"/>
-<wire x1="73.2" y1="58.14" x2="75.3" y2="60.24" width="0.1524" layer="1"/>
-<wire x1="67.6238" y1="67.6762" x2="27.3762" y2="67.6762" width="0.1524" layer="1"/>
-<wire x1="27.3762" y1="67.6762" x2="26.3" y2="66.6" width="0.1524" layer="1"/>
-<wire x1="25.7" y1="61.1" x2="16.2" y2="61.1" width="0.1524" layer="1"/>
-<wire x1="16.2" y1="61.1" x2="14.84" y2="62.46" width="0.1524" layer="1"/>
-<wire x1="14.84" y1="62.46" x2="14.84" y2="63.45" width="0.1524" layer="1"/>
-<wire x1="26.3" y1="66.6" x2="26.3" y2="61.7" width="0.1524" layer="1"/>
-<wire x1="26.3" y1="61.7" x2="25.7" y2="61.1" width="0.1524" layer="1"/>
-<wire x1="75.3" y1="60.24" x2="75.3" y2="62.2" width="0.1524" layer="1"/>
-<wire x1="75" y1="62.5" x2="75.3" y2="62.2" width="0.1524" layer="1"/>
-<wire x1="69" y1="66.3" x2="69" y2="63.5" width="0.1524" layer="1"/>
-<wire x1="69" y1="66.3" x2="67.6238" y2="67.6762" width="0.1524" layer="1"/>
-<wire x1="69" y1="63.5" x2="70" y2="62.5" width="0.1524" layer="1"/>
-<wire x1="70" y1="62.5" x2="75" y2="62.5" width="0.1524" layer="1"/>
+<contactref element="JP2" pad="37"/>
+<wire x1="60.56" y1="63.45" x2="65.87" y2="58.14" width="0.1524" layer="16"/>
+<wire x1="65.87" y1="58.14" x2="73.2" y2="58.14" width="0.1524" layer="16"/>
 </signal>
 <signal name="GPIO19">
 <contactref element="JP4" pad="3"/>

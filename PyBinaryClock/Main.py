@@ -35,7 +35,7 @@ class Main(object):
                 f = file(time.asctime()+".log", 'w')
                 for l in e:
                     f.write(str(l))
-                os.system('sudo reboot')
+                os.system('sudo halt')
 
 
 if __name__ == "__main__":
@@ -44,6 +44,6 @@ if __name__ == "__main__":
     gl.run()
 
 
-#Put in  /etc/rc.local for autostart at boot:
+#Put this in  /etc/rc.local for autostart at boot:
 #cd /home/pi/PyBinaryClock
 #sudo python Main.py &

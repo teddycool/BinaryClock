@@ -11,7 +11,7 @@ class TempMonitor(object):
     def initialize(self):
         pass
 
-
+#Read cpu temp
     def get_cpu_temperature(self):
         """get cpu temperature using vcgencmd"""
         process = subprocess.Popen(['vcgencmd', 'measure_temp'], stdout=subprocess.PIPE)

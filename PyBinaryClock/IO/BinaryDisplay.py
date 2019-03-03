@@ -1,6 +1,9 @@
 __author__ = 'teddycool'
+
+#https://github.com/rpi-ws281x/rpi-ws281x-python
+
 import time
-from neopixel import *
+from rpi_ws281x import *
 
 LED_COUNT = 20
 LED_PIN = 18
@@ -25,12 +28,12 @@ class BinaryDisplay(object):
 
     def initialize(self):
         self._displayArray.begin()
-        self._displayArray.setBrightness(40)
+
 
 
     #This methods sets the values for one column of the WS2812 leds
     def _setLeds(self, leds ):
-        print leds
+        #print leds
         self._ledstatusarray.extend(leds)
 
 
@@ -66,11 +69,23 @@ class BinaryDisplay(object):
             time.sleep(0.1)
 
 
+    def SetBrightness(self, brightness):
+        self._brightness= brightness
+        self._displayArray.setBrightness(brightness)
+
+    def ToggleBrightness(self):
+        if self._brightness < 100:
+            self._brightness = self._brightness + 10
+        else:
+            self._brightness= 10
+        self.SetBrightness(self._brightness)
+        print "Brigthness = " + str(self._brightness)
+
     def update(self):
         self._ledstatusarray = []
         #Set current time...
         timestruct = time.localtime()
-        print  timestruct
+        #print  timestruct
 
         #Start from the rigth since firs led (index 0) is the lowest rightmost led
         self._setLeds(self._figuredict[timestruct.tm_sec % 10])
@@ -83,9 +98,9 @@ class BinaryDisplay(object):
         #Set the values of each pixel
         for led in range(0, len(self._ledstatusarray), 1):
             if self._ledstatusarray[led] == 0:
-                self._displayArray.setPixelColor(led,Color(0, 7, 0)) #Color when 'off'
+                self._displayArray.setPixelColor(led,Color(10, 0, 0)) #Color when 'off'
             else:
-                self._displayArray.setPixelColor(led, Color(40, 0, 0,)) #Color when 'on'
+                self._displayArray.setPixelColor(led, Color(0, 50, 0,)) #Color when 'on'
 
         #Turn them on with new values
         self._displayArray.show()
