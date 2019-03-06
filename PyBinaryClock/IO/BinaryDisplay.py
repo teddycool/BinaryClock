@@ -47,7 +47,7 @@ class BinaryDisplay(object):
 
 
     def test(self):
-        print "testClock started..."
+        print "Test started..."
 
         #Loop through all leds
         for i in range(20):
