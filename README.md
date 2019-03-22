@@ -15,12 +15,13 @@ It is a very simple 'game-loop' kind of program that updates every 1/10 second. 
 
 Future sw-improvements will be added possibillities to configure colors and brightness from outside.
 
-Future hw-improvemnts will be added to make it possible to have some IOs controled by time. In version 1 the connection to the RTC didn't work correctly and this will also be fixed.
+Hardware version 2 is now ready and added a real-time clock directly on the circuitboard, some IOs to be controled by time, some extra buttons and a circuit for measuring the background light. This board can be ordered from here: https://aisler.net/p/VFLSRFLZ .
 
 Ref1: https://en.wikipedia.org/wiki/Binary_clock
 Ref2: https://www.raspberrypi-spy.co.uk/2015/05/adding-a-ds3231-real-time-clock-to-the-raspberry-pi/
 
 
+Pictures of hw version 1:
 <img src="https://github.com/teddycool/BinaryClock/blob/master/20190218_191029.jpg" alt="Front..."/>
 
 <img src="https://github.com/teddycool/BinaryClock/blob/master/20190218_191040.jpg" alt="Rear..."/>
