@@ -13,7 +13,7 @@ class TempMonitor(object):
 
 #Read cpu temp
     def get_cpu_temperature(self):
-        """get cpu temperature using vcgencmd"""
+        #get cpu temperature using vcgencmd
         process = subprocess.Popen(['vcgencmd', 'measure_temp'], stdout=subprocess.PIPE)
         output, _error = process.communicate()
         return float(output[output.index('=') + 1:output.rindex("'")])

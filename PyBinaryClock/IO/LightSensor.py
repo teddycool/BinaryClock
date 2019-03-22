@@ -37,7 +37,7 @@ if __name__ == '__main__':
     import RPi.GPIO as GPIO
     GPIO.setmode(GPIO.BCM)
     print "Testcode for LightSensor"
-    ls=LightSensor(GPIO, 21)
+    ls=LightSensor(GPIO, 14)
     ls.initialize()
     while True:
         print ls.update()

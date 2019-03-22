@@ -1,6 +1,8 @@
 __author__ = 'teddycool'
 
 #Parent-class for all state-loops
+#https://en.wikipedia.org/wiki/State_pattern
+import time
 
 class StateLoop(object):
 
@@ -8,8 +10,9 @@ class StateLoop(object):
         return
 
     def initialize(self):
+        self.lastUpdate= time.time()
         return
 
-    def update(self, frame):
+    def update(self, context):
         return
 

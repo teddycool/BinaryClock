@@ -35,7 +35,7 @@ class Main(object):
                 f = file(time.asctime()+".log", 'w')
                 for l in e:
                     f.write(str(l))
-                os.system('sudo halt')
+                #os.system('sudo halt')
 
 
 if __name__ == "__main__":

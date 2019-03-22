@@ -14800,6 +14800,11 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <wire x1="180.34" y1="0" x2="193.04" y2="0" width="0.1524" layer="91"/>
 <label x="195.58" y="0" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="JP2" gate="A" pin="17"/>
+<wire x1="210.82" y1="25.4" x2="200.66" y2="25.4" width="0.1524" layer="91"/>
+<label x="195.58" y="27.94" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="GPIO19" class="0">
 <segment>
@@ -14867,12 +14872,13 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <wire x1="182.88" y1="142.24" x2="182.88" y2="147.32" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$24" class="0">
+<net name="VBATT" class="0">
 <segment>
 <pinref part="BT1" gate="G$1" pin="+"/>
 <wire x1="177.8" y1="134.62" x2="177.8" y2="139.7" width="0.1524" layer="91"/>
 <pinref part="U1" gate="G$1" pin="VBATT"/>
 <wire x1="177.8" y1="139.7" x2="200.66" y2="139.7" width="0.1524" layer="91"/>
+<label x="167.64" y="139.7" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="SCL" class="0">

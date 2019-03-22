@@ -30,13 +30,10 @@ class BinaryDisplay(object):
         self._displayArray.begin()
 
 
-
     #This methods sets the values for one column of the WS2812 leds
     def _setLeds(self, leds ):
         #print leds
         self._ledstatusarray.extend(leds)
-
-
 
     def showFikaPattern(self):
         time.sleep(1)
@@ -44,6 +41,19 @@ class BinaryDisplay(object):
             self._displayArray.setPixelColor(i, Color(0, 50, 0, ))
         self._displayArray.show()
         time.sleep(1)
+
+    def showWiFiConnectionPattern(self, connected ):
+        if not connected:
+            for i in range(20):
+                self._displayArray.setPixelColor(i, Color(0, 0, 50, ))
+            self._displayArray.show()
+        else:
+            for i in range(20):
+                self._displayArray.setPixelColor(i, Color(0, 50, 0, ))
+            self._displayArray.show()
+        time.sleep(1)
+
+
 
 
     def test(self):
@@ -98,7 +108,7 @@ class BinaryDisplay(object):
         #Set the values of each pixel
         for led in range(0, len(self._ledstatusarray), 1):
             if self._ledstatusarray[led] == 0:
-                self._displayArray.setPixelColor(led,Color(10, 0, 0)) #Color when 'off'
+                self._displayArray.setPixelColor(led,Color(8, 0, 0)) #Color when 'off'
             else:
                 self._displayArray.setPixelColor(led, Color(0, 50, 0,)) #Color when 'on'
 

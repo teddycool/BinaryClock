@@ -2,9 +2,8 @@ __author__ = 'teddycool'
 
 #Handles io-inputs from  buttons and switches
 
-config = {"Button": {"Pressed": 0.1, "LongPressed": 1.5}}
+config = {"Button": {"Pressed": 0.5, "LongPressed": 3}}
 import time
-
 
 
 #The button is 'on' when holded pressed and IO defined in init is connected to ground
@@ -40,88 +39,20 @@ class PushButton(object):
         return self._state
 
 
-
-#The switch is 'on' when IO defined in init is connected to ground
-class OnOffSwitch(object):
-    def __init__(self, GPIO, inputpin):
-        self._gpio = GPIO
-        self._inputpin = inputpin
-        self._states = ['OFF', 'ON']
-        self._state = self._states[0]
-
-    def initialize(self):
-        self._gpio.setmode(self._gpio.BCM)
-        self._gpio.setup(self._inputpin, self._gpio.IN, pull_up_down=self._gpio.PUD_UP)
-
-    def update(self):
-        if not self._gpio.input(self._inputpin): #When grounded, switch is on, PullUp is released
-            self._state= self._states[1]
-        else:
-            self._state = self._states[0]
-        return self._state
-
-
-
-class OnOffOnSwitch(object):
-    def __init__(self, GPIO, inputpin1, inputpin2):
-        self._gpio = GPIO
-        self._inputpin1 = inputpin1
-        self._inputpin2 = inputpin2
-        self._states = ['OFF', 'ON1','ON2']
-        self._state = self._states[0]
-
-    def initialize(self):
-        self._gpio.setmode(self._gpio.BCM)
-        self._gpio.setup(self._inputpin1, self._gpio.IN, pull_up_down=self._gpio.PUD_UP)
-        self._gpio.setup(self._inputpin2, self._gpio.IN, pull_up_down=self._gpio.PUD_UP)
-
-    def update(self):
-        if self._gpio.input(self._inputpin1) and self._gpio.input(self._inputpin2):
-            self._state = self._states[0]
-        else:
-            if self._gpio.input(self._inputpin1) and  not self._gpio.input(self._inputpin2):
-                self._state = self._states[2]
-            if not self._gpio.input(self._inputpin1) and self._gpio.input(self._inputpin2):
-                self._state = self._states[1]
-        return self._state
-
-
-
-class OnOnSwitch(object):
-    def __init__(self, GPIO, inputpin1, inputpin2):
-        self._gpio = GPIO
-        self._inputpin1 = inputpin1
-        self._inputpin2 = inputpin2
-        self._states = ['OFF', 'ON1','ON2']
-        self._state = self._states[0]
-
-    def initialize(self):
-        self._gpio.setmode(self._gpio.BCM)
-        self._gpio.setup(self._inputpin1, self._gpio.IN, pull_up_down=self._gpio.PUD_UP)
-        self._gpio.setup(self._inputpin2, self._gpio.IN, pull_up_down=self._gpio.PUD_UP)
-
-    def update(self):
-        if self._gpio.input(self._inputpin1) and self._gpio.input(self._inputpin2):
-            self._state = self._states[0]
-        else:
-            if self._gpio.input(self._inputpin1) and  not self._gpio.input(self._inputpin2):
-                self._state = self._states[2]
-            if not self._gpio.input(self._inputpin1) and self._gpio.input(self._inputpin2):
-                self._state = self._states[1]
-        return self._state
-
-
-
-
 if __name__ == '__main__':
     import RPi.GPIO as GPIO
-    cal = PushButton(GPIO, 23)
-    cal.initialize()
-    game = PushButton(GPIO, 24)
-    game.initialize()
+    GPIO.setmode(GPIO.BOARD)
+    switches = []
+    for io in [19,21,23]:  #IOs for switches as in HW version 2
+        switches.append(PushButton(GPIO, io))
+    for switch in switches:
+        switch.initialize()
     try:
         while True:
-            print str(time.time()) + " Cal: " + str(cal.update()) + " Game: " + str(game.update())
-            time.sleep(0.1)
+            s= ""
+            for switch in switches:
+                s = s + str(switch.update()) + " "
+            print str(time.time()) + " :   " + s
+            time.sleep(0.5)
     except:
         GPIO.cleanup()
