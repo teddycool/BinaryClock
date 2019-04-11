@@ -15,23 +15,19 @@ class LightSensor(object):
         # Discharge capacitor
         self._gpio.setup(self._pin, self._gpio.OUT)
         self._gpio.output(self._pin, self._gpio.LOW)
-        time.localtime(0.1)
+        time.sleep(0.1)
         self._lastDischarge = time.time()
-        self._count =0
+        time.sleep(0.1)
+        self._gpio.setup(self._pin, self._gpio.IN)
 
 
     def update(self):
-        cnt = 0
-        if self._count == 0:
-            self._gpio.setup(self._pin, self._gpio.IN)
-            self._count = self._count + 1
+        if self._gpio.input(self._pin) == self._gpio.LOW:   #still LOW, continue to count time...
+            return 0.0
         else:
-            if self._gpio.input(self._pin) == self._gpio.LOW:   #still LOW, continue to count time...
-                self._count = self._count + 1
-            else:                                               #signal high, stop and fetch counter, reset for new meassurement cycle
-                cnt = self._count + 1
-                self.initialize()
-        return cnt
+            dtime = time.time()-self._lastDischarge
+            self.initialize()
+            return dtime
 
 if __name__ == '__main__':
     import RPi.GPIO as GPIO

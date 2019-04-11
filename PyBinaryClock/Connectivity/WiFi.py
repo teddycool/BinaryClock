@@ -12,27 +12,27 @@ class WiFi(object):
         print "Init WiFi management"
 
 
-    def WpsConnectStart(self):
+    def WpsConnectStart(self, context):
         print "WiFi connection start"
-        wpsresult = os.system('sudo wpa_cli wps_pbc') #try to use wps push button mode
+        context._binDisplay.showWiFiConnectionStart()
+        wpsresult = os.popen('sudo wpa_cli wps_pbc').read() #try to use wps push button mode
+        print wpsresult
+        if wpsresult.find('p2p') == -1:
+            return True
 
-        if wpsresult.contains('p2p'):  #zero default p2p for wlan is set, this must be removed
+        if wpsresult.find('p2p') > -1 :  #zero default p2p for wlan is set, this must be removed
             os.system('sudo rm /var/run/wpa_supplicant/p2p-dev-wlan0')
-            wpsresult = os.system('sudo wpa_cli wps_pbc')  # try to use wps push button mode
-        return  wpsresult.contains('wlan0')
+            wpsresult = os.popen('sudo wpa_cli wps_pbc').read()  # try to use wps push button mode
+            if wpsresult.find('p2p') == -1 :
+                return True
+            else:
+                return False
 
-
-    def WpsConnectionCheck(self):
+    def WpsConnectionCheck(self, context):
         print " Checking connection...."
-        while True:
-            for i in range(120):
-                try:
-                    urllib2.urlopen("http://www.google.com").close()
-                    return True
-                except:
-                    pass
-                time.sleep(1)
-            return False
+        connected = context._binDisplay.showWiFiConnectionProgress()
+        return connected
+
 
 
   #  def resetwifi(self):
@@ -41,12 +41,16 @@ class WiFi(object):
 
 
 if __name__ == '__main__':
-  #  import RPi.GPIO as GPIO
+    import RPi.GPIO as GPIO
+    import MainLoop
+    context = MainLoop.MainLoop()
+    context.initialize()
+
     print "Testcode for WiFi"
     wifi=WiFi()
     if wifi.WpsConnectStart():
         print "Press WPS on  router"
-        if wifi.WpsConnectionCheck():
+        if wifi.WpsConnectionCheck(context):
             print "Connected"
         else:
             print "WPS Connection FAILED"

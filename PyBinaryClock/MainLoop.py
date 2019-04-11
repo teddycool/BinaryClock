@@ -7,8 +7,9 @@ from IO import IoInputs
 from IO import TempMonitor
 from IO import LightSensor
 import os
-#from ClockStates import ClockLoop
 from ClockStates import ClockInit
+from ClockStates import ClockLoop
+from ClockStates import WpsInitLoop
 
 
 #Global GPIO used by all...
@@ -19,26 +20,53 @@ class MainLoop(object):
         self._gpio= GPIO
         self._gpio.setmode(self._gpio.BCM)
         self._binDisplay = BinaryDisplay.BinaryDisplay()
-        self._resetButton = IoInputs.PushButton(self._gpio,11)
+        self._s1 = IoInputs.PushButton(self._gpio, 11) #S1: test-display as default
+        self._s2 = IoInputs.PushButton(self._gpio, 9)  #S2:
+        self._s3 = IoInputs.PushButton(self._gpio, 10)  #S3: WiFi-setup as default
         self._tm = TempMonitor.TempMonitor()
-#        self._ls=LightSensor.LightSensor(self._gpio,14)
+        self._ls = LightSensor.LightSensor(self._gpio,14)
+        self._states = {"ClockInit": ClockInit.ClockInit(), "ClockLoop": ClockLoop.ClockLoop(), "WpsInit": WpsInitLoop.WpsInitLoop()}
 
     def initialize(self):
         print "Mainloop initialize"
-        self._resetButton.initialize()
+        self._s1.initialize()
         self._binDisplay.initialize()
         self._tm.initialize()
-        self._binDisplay.SetBrightness(50)
+        self._binDisplay.SetBrightness(60)
+        self._ls.initialize()
 
         self._lastUpdate = time.time()
         self._lastTempCheck = time.time()
         self._lastLightCheck=time.time()
-        self._setState(ClockInit.ClockInit())
-       # self._myState.initialize()
+        for state in self._states:
+            self._states[state].initialize()
+        self._setState("ClockInit")
 
     def update(self):
-        # Check for new config now and then... or in mainloop?
-        #TODO: move last time update to clock-loop
+        #Logic for all states:
+
+        # #Check if wifi button pressed
+
+
+        #Check background ligth and set brigthness... normal 50, min 30 and max 80...
+        ligth = int(self._ls.update())
+        if ligth > 0:
+            if ligth > 5:
+                brightn = 40
+            elif ligth < 3:
+                brightn = 100
+            else:
+                brightn = 60
+            self._binDisplay.SetBrightness(brightn)
+        #
+
+        #
+        # #Check if wifi button pressed
+        # s3status = self._s3.update()
+        # if s3status == "LongPressed":
+        #     self._binDisplay.showWiFiConnectionPattern(False)
+        #     #self._setState(ClockInit.ClockInit())
+
         if time.time() - self._lastTempCheck > 10:
             temp = self._tm.get_cpu_temperature()
             self._lastTempCheck=time.time()
@@ -58,12 +86,11 @@ class MainLoop(object):
 
 
     def _setState(self, newstate):
-        print "Switching state to : " + str(newstate)
-        self._myState=newstate
+        print "Switching state to : " + newstate
+        self._myState=self._states[newstate]
 
     def __del__(self):
         self._binDisplay.off()
         self._gpio.cleanup()
         print "MainLoop cleaned up"
-
 

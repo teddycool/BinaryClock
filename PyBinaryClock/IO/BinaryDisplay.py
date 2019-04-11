@@ -4,6 +4,7 @@ __author__ = 'teddycool'
 
 import time
 from rpi_ws281x import *
+import urllib2
 
 LED_COUNT = 20
 LED_PIN = 18
@@ -28,12 +29,8 @@ class BinaryDisplay(object):
 
     def initialize(self):
         self._displayArray.begin()
+        self._brightness = 50
 
-
-    #This methods sets the values for one column of the WS2812 leds
-    def _setLeds(self, leds ):
-        #print leds
-        self._ledstatusarray.extend(leds)
 
     def showFikaPattern(self):
         time.sleep(1)
@@ -42,16 +39,32 @@ class BinaryDisplay(object):
         self._displayArray.show()
         time.sleep(1)
 
-    def showWiFiConnectionPattern(self, connected ):
-        if not connected:
-            for i in range(20):
-                self._displayArray.setPixelColor(i, Color(0, 0, 50, ))
-            self._displayArray.show()
-        else:
-            for i in range(20):
-                self._displayArray.setPixelColor(i, Color(0, 50, 0, ))
-            self._displayArray.show()
+    def showWiFiConnectionStart(self):
         time.sleep(1)
+        for i in range(20):
+            self._displayArray.setPixelColor(i, Color(50, 50, 0, ))
+        self._displayArray.show()
+        time.sleep(1)
+        self.off()
+
+    def showWiFiConnectionProgress(self ):
+        connected = False
+        while not connected:
+            for i in range(20):
+                try:
+                    print "Trying to connect..."
+                    self._displayArray.setPixelColor(i, Color(0, 50, 0, ))
+                    self._displayArray.show()
+                    urllib2.urlopen("http://www.google.com").close()
+                    connected = True
+                    time.sleep(6)
+                    break
+                except:
+                    self._displayArray.setPixelColor(i, Color(0, 0, 50, ))
+                    self._displayArray.show()
+                time.sleep(6)
+        self.off()
+        return connected
 
 
 
@@ -80,16 +93,13 @@ class BinaryDisplay(object):
 
 
     def SetBrightness(self, brightness):
-        self._brightness= brightness
-        self._displayArray.setBrightness(brightness)
-
-    def ToggleBrightness(self):
-        if self._brightness < 100:
-            self._brightness = self._brightness + 10
+        if self._brightness == brightness:
+            pass
         else:
-            self._brightness= 10
-        self.SetBrightness(self._brightness)
-        print "Brigthness = " + str(self._brightness)
+            self._brightness= brightness
+            self._displayArray.setBrightness(brightness)
+            print "New brightness: " + str(brightness)
+
 
     def update(self):
         self._ledstatusarray = []
@@ -97,13 +107,13 @@ class BinaryDisplay(object):
         timestruct = time.localtime()
         #print  timestruct
 
-        #Start from the rigth since firs led (index 0) is the lowest rightmost led
-        self._setLeds(self._figuredict[timestruct.tm_sec % 10])
-        self._setLeds(self._figuredict[timestruct.tm_sec / 10][:3])  # only first 3 figuredict in this column
-        self._setLeds(self._figuredict[timestruct.tm_min % 10])
-        self._setLeds(self._figuredict[timestruct.tm_min / 10][:3])  # only first 3 figuredict in this column
-        self._setLeds(self._figuredict[timestruct.tm_hour % 10])
-        self._setLeds(self._figuredict[timestruct.tm_hour / 10][:2])  # only first 2 figuredict in this column
+        #Start from the rigth since first led (index 0) is the lowest rightmost led
+        self._ledstatusarray.extend((self._figuredict[timestruct.tm_sec % 10]))
+        self._ledstatusarray.extend((self._figuredict[timestruct.tm_sec / 10][:3]))  # only first 3 figuredict in this column
+        self._ledstatusarray.extend((self._figuredict[timestruct.tm_min % 10]))
+        self._ledstatusarray.extend((self._figuredict[timestruct.tm_min / 10][:3]))  # only first 3 figuredict in this column
+        self._ledstatusarray.extend((self._figuredict[timestruct.tm_hour % 10]))
+        self._ledstatusarray.extend((self._figuredict[timestruct.tm_hour / 10][:2]))  # only first 2 figuredict in this column
 
         #Set the values of each pixel
         for led in range(0, len(self._ledstatusarray), 1):
@@ -131,7 +141,10 @@ if __name__ == '__main__':
     #GPIO.setmode(GPIO.BOARD)
     bd= BinaryDisplay()
     bd.initialize()
-    bd.test()
+    bd.off()
+    bd.showWiFiConnectionProgress()
     while(1):
         bd.update()
         time.sleep(0.1)
+
+

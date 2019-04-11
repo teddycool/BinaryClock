@@ -1,9 +1,5 @@
 from ClockStates import BaseStateLoop
-from ClockStates import ClockLoop
-from ClockStates import WpsInitLoop
-import time
 import urllib2
-
 
 
 class ClockInit(BaseStateLoop.StateLoop):
@@ -28,8 +24,9 @@ class ClockInit(BaseStateLoop.StateLoop):
             print "NOT Connected"
 
         if connected:
-            #TODO: fix a clock set state...
-            context._setState(ClockLoop.ClockLoop())
+            context._setState("ClockLoop")
         else:
-            context._setState(ClockLoop.ClockLoop())
+            # TODO: fix a clock set state...
+            #TODO: Check if there is some valid time to read from RTC, if not ?
+            context._setState("WpsInit")
 
