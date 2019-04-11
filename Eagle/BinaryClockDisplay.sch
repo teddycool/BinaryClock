@@ -13882,9 +13882,9 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <sheets>
 <sheet>
 <plain>
-<text x="-226.06" y="165.1" size="1.778" layer="91" rot="R180">Hours</text>
-<text x="-101.6" y="165.1" size="1.778" layer="91">Minutes</text>
-<text x="40.64" y="175.26" size="1.778" layer="91">Seconds</text>
+<text x="-190.5" y="154.94" size="1.778" layer="91" rot="R180">Hours</text>
+<text x="-68.58" y="152.4" size="1.778" layer="91">Minutes</text>
+<text x="73.66" y="152.4" size="1.778" layer="91">Seconds</text>
 </plain>
 <instances>
 <instance part="D1" gate="G$1" x="129.54" y="40.64" smashed="yes">
@@ -14599,7 +14599,7 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <pinref part="S1" gate="G$1" pin="2"/>
 <pinref part="JP2" gate="A" pin="23"/>
 <wire x1="175.26" y1="17.78" x2="210.82" y2="17.78" width="0.1524" layer="91"/>
-<label x="180.34" y="15.24" size="1.778" layer="95"/>
+<label x="175.26" y="17.78" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="5V" class="0">
@@ -14832,6 +14832,7 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <pinref part="S2" gate="G$1" pin="2"/>
 <wire x1="157.48" y1="20.32" x2="210.82" y2="20.32" width="0.1524" layer="91"/>
 <pinref part="JP2" gate="A" pin="21"/>
+<label x="157.48" y="20.32" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="GPIO10" class="0">
@@ -14839,6 +14840,7 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <pinref part="S3" gate="G$1" pin="2"/>
 <pinref part="JP2" gate="A" pin="19"/>
 <wire x1="139.7" y1="22.86" x2="210.82" y2="22.86" width="0.1524" layer="91"/>
+<label x="142.24" y="22.86" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="GPIO14" class="0">
