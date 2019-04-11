@@ -15,7 +15,7 @@ It is a very simple 'game-loop' kind of program that updates every 1/10 second. 
 
 Future sw-improvements will be added possibillities to configure colors and brightness from outside.
 
-Hardware version 2 is now ready and added a real-time clock directly on the circuitboard, some IOs to be controled by time, some extra buttons and a circuit for measuring the background light. This board can be ordered from here: https://aisler.net/p/VFLSRFLZ .
+Hardware version 2 is now ready and added a real-time clock directly on the circuitboard, some IOs to be controled by time, some extra buttons and a circuit for measuring the background light. 
 
 Ref1: https://en.wikipedia.org/wiki/Binary_clock
 Ref2: https://www.raspberrypi-spy.co.uk/2015/05/adding-a-ds3231-real-time-clock-to-the-raspberry-pi/
