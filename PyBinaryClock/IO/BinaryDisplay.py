@@ -30,6 +30,9 @@ class BinaryDisplay(object):
     def initialize(self):
         self._displayArray.begin()
         self._brightness = 50
+        for i in range(20):
+            self._displayArray.setPixelColor(i, Color(0, 50, 10, ))
+        self._displayArray.show()
 
 
     def showFikaPattern(self):
@@ -40,9 +43,8 @@ class BinaryDisplay(object):
         time.sleep(1)
 
     def showWiFiConnectionStart(self):
-        time.sleep(1)
         for i in range(20):
-            self._displayArray.setPixelColor(i, Color(50, 50, 0, ))
+            self._displayArray.setPixelColor(i, Color(20, 20, 0, ))
         self._displayArray.show()
         time.sleep(1)
         self.off()
@@ -51,23 +53,30 @@ class BinaryDisplay(object):
         connected = False
         while not connected:
             for i in range(20):
+                self._displayArray.setPixelColor(i, Color(0, 0, 50, ))
+                self._displayArray.show()
                 try:
                     print "Trying to connect..."
-                    self._displayArray.setPixelColor(i, Color(0, 50, 0, ))
-                    self._displayArray.show()
                     urllib2.urlopen("http://www.google.com").close()
                     connected = True
-                    time.sleep(6)
+                    self._displayArray.setPixelColor(i, Color(0, 50, 0, ))
+                    self._displayArray.show()
+                    time.sleep(2)
                     break
                 except:
-                    self._displayArray.setPixelColor(i, Color(0, 0, 50, ))
-                    self._displayArray.show()
-                time.sleep(6)
+                    time.sleep(6)
         self.off()
         return connected
 
 
-
+    def showNoValidTimePattern(self):
+        # Loop through all leds
+        self.off()
+        time.sleep(0.5)
+        for i in range(20):
+            self._displayArray.setPixelColor(i, Color(60, 0, 0, ))
+        self._displayArray.show()
+        time.sleep(0.5)
 
     def test(self):
         print "Test started..."
@@ -135,16 +144,16 @@ class BinaryDisplay(object):
 
 
 if __name__ == '__main__':
-  #  import RPi.GPIO as GPIO
     print "Testcode for BinaryDisplay"
-   # import RPi.GPIO as GPIO
-    #GPIO.setmode(GPIO.BOARD)
     bd= BinaryDisplay()
     bd.initialize()
     bd.off()
-    bd.showWiFiConnectionProgress()
     while(1):
-        bd.update()
-        time.sleep(0.1)
+        try:
+            bd.showNoValidTimePattern()
+        except:
+            bd.off()
+
+
 
 

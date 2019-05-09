@@ -1,5 +1,7 @@
 from ClockStates import BaseStateLoop
 import urllib2
+import os
+import time
 
 
 class ClockInit(BaseStateLoop.StateLoop):
@@ -24,9 +26,22 @@ class ClockInit(BaseStateLoop.StateLoop):
             print "NOT Connected"
 
         if connected:
+            # TODO: move handling of HW clock to RTC class..
+            print "Will update HW clock..."
+            print "System time: " + time.asctime(time.localtime())
+           # print "Your time zone is set to UTC : " + str(time.timezone)
+            time.sleep(5)
+            os.system('sudo hwclock -s')
             context._setState("ClockLoop")
         else:
-            # TODO: fix a clock set state...
+            #TODO: fix a clock set state...
             #TODO: Check if there is some valid time to read from RTC, if not ?
-            context._setState("WpsInit")
-
+            #TODO: move handling of HW clock to RTC class..
+            # TODO: move handling of HW clock to RTC class..
+            print "System time is set to: " + time.asctime(time.localtime())
+            timeres = os.popen('sudo hwclock -r').read()
+            if time.localtime().tm_year >= 2019:
+                context._setState("ClockLoop")
+            else:
+                context._setState("NoValidTime")
+                print "System time is ruled as not set correctly. Try to connect to a network"

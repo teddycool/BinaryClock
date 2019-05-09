@@ -16,12 +16,11 @@ class TempMonitor(object):
         #get cpu temperature using vcgencmd
         process = subprocess.Popen(['vcgencmd', 'measure_temp'], stdout=subprocess.PIPE)
         output, _error = process.communicate()
-        return float(output[output.index('=') + 1:output.rindex("'")])
+        return float(output[output.index('=') + 1:output.rindex("'")])  #Return temperature like 43.5
 
 
 
 if __name__ == '__main__':
-  #  import RPi.GPIO as GPIO
     print "Testcode for TempMonitor"
     tm = TempMonitor()
     print tm.get_cpu_temperature()

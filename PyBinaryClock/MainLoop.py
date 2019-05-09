@@ -10,6 +10,7 @@ import os
 from ClockStates import ClockInit
 from ClockStates import ClockLoop
 from ClockStates import WpsInitLoop
+from ClockStates import NoTimeState
 
 
 #Global GPIO used by all...
@@ -20,12 +21,13 @@ class MainLoop(object):
         self._gpio= GPIO
         self._gpio.setmode(self._gpio.BCM)
         self._binDisplay = BinaryDisplay.BinaryDisplay()
-        self._s1 = IoInputs.PushButton(self._gpio, 11) #S1: test-display as default
-        self._s2 = IoInputs.PushButton(self._gpio, 9)  #S2:
-        self._s3 = IoInputs.PushButton(self._gpio, 10)  #S3: WiFi-setup as default
+        self._s1 = IoInputs.PushButton(self._gpio, 11)  #S1: WiFi-setup
+        self._s2 = IoInputs.PushButton(self._gpio, 9)   #S2:
+        self._s3 = IoInputs.PushButton(self._gpio, 10)  #S3:
         self._tm = TempMonitor.TempMonitor()
         self._ls = LightSensor.LightSensor(self._gpio,14)
-        self._states = {"ClockInit": ClockInit.ClockInit(), "ClockLoop": ClockLoop.ClockLoop(), "WpsInit": WpsInitLoop.WpsInitLoop()}
+        self._states = {"ClockInit": ClockInit.ClockInit(), "ClockLoop": ClockLoop.ClockLoop(),
+                        "WpsInit": WpsInitLoop.WpsInitLoop(),"NoValidTime": NoTimeState.NoTimeState()}
 
     def initialize(self):
         print "Mainloop initialize"
@@ -58,14 +60,6 @@ class MainLoop(object):
             else:
                 brightn = 60
             self._binDisplay.SetBrightness(brightn)
-        #
-
-        #
-        # #Check if wifi button pressed
-        # s3status = self._s3.update()
-        # if s3status == "LongPressed":
-        #     self._binDisplay.showWiFiConnectionPattern(False)
-        #     #self._setState(ClockInit.ClockInit())
 
         if time.time() - self._lastTempCheck > 10:
             temp = self._tm.get_cpu_temperature()

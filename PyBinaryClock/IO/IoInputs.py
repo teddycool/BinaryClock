@@ -1,13 +1,13 @@
 __author__ = 'teddycool'
 
-#Handles io-inputs from  buttons and switches
+#Handles io-inputs from  buttons
+#The button is 'on' when holded pressed and IO defined in init is connected to ground
+#Types of signals/states: released, pressed and long-pressed, times for holding are defined in config
+
 
 config = {"Button": {"Pressed": 0.5, "LongPressed": 3}}
 import time
 
-
-#The button is 'on' when holded pressed and IO defined in init is connected to ground
-#Types of signals/states: released, pressed and long-pressed, times for holding are defined in config
 class PushButton(object):
     def __init__(self, GPIO, inputpin):
         self._gpio = GPIO
@@ -17,8 +17,7 @@ class PushButton(object):
         self._states = ["Released","Pressed", "LongPressed"]
 
     def initialize(self):
-        #self._gpio.setmode(self._gpio.BCM)
-        self._gpio.setup(self._inputpin, self._gpio.IN, pull_up_down=self._gpio.PUD_UP)
+         self._gpio.setup(self._inputpin, self._gpio.IN, pull_up_down=self._gpio.PUD_UP)
 
     def update(self):
         self._state = self._states[0]
@@ -43,7 +42,7 @@ if __name__ == '__main__':
     import RPi.GPIO as GPIO
     GPIO.setmode(GPIO.BOARD)
     switches = []
-    for io in [19,21,23]:  #IOs for switches as in HW version 2
+    for io in [19,21,23]:  #IOs for switches as in HW version 2, 3 and 4
         switches.append(PushButton(GPIO, io))
     for switch in switches:
         switch.initialize()

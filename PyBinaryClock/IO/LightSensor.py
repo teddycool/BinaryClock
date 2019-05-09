@@ -25,9 +25,9 @@ class LightSensor(object):
         if self._gpio.input(self._pin) == self._gpio.LOW:   #still LOW, continue to count time...
             return 0.0
         else:
-            dtime = time.time()-self._lastDischarge
+            ctime = time.time()-self._lastDischarge
             self.initialize()
-            return dtime
+            return ctime  #Time to charge the capacitor. Longer time = less light
 
 if __name__ == '__main__':
     import RPi.GPIO as GPIO
@@ -38,10 +38,3 @@ if __name__ == '__main__':
     while True:
         print ls.update()
         time.sleep(0.1)
-
-
-
-
-
-
-
