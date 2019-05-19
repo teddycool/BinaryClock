@@ -30,10 +30,14 @@ class BinaryDisplay(object):
     def initialize(self):
         self._displayArray.begin()
         self._brightness = 50
+        self.showInitPattern()
+
+
+
+    def showInitPattern(self):
         for i in range(20):
             self._displayArray.setPixelColor(i, Color(0, 50, 10, ))
         self._displayArray.show()
-
 
     def showFikaPattern(self):
         time.sleep(1)
@@ -151,8 +155,10 @@ if __name__ == '__main__':
     while(1):
         try:
             bd.showNoValidTimePattern()
+            time.sleep(0.5)
         except:
             bd.off()
+        time.sleep(0.5)
 
 
 

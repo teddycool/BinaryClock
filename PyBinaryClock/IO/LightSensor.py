@@ -1,6 +1,6 @@
 __author__ = 'teddycool'
 #REF: http://www.rpiblog.com/2012/11/reading-analog-values-from-digital-pins.html
-#This is calibrated with a LDR GL  5516 and a 47uF elotrolytic capacitor.
+#This is calibrated with a LDR GL  5516 and a 47uF eletrolytic capacitor.
 
 import time
 

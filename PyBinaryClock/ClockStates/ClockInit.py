@@ -17,6 +17,7 @@ class ClockInit(BaseStateLoop.StateLoop):
 
     def update(self, context):
         #TODO: check for network and time status
+        #TODO: Use InternetDetction class instead...
         try:
             urllib2.urlopen("http://www.google.com").close()
             connected = True
